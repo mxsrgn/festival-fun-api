@@ -5,21 +5,21 @@ const cors = require('cors')
 
 app.use(cors())
 
-const festivals = {
+const musicFestivals = {
     'belgium':{
         'eventLocation': 'Boom, Antwerp, Belgium',
         'eventName': 'Tomorrowland',
-        'eventType': 'EDM Music Festival'
+        'eventMusicGenre': 'EDM Music Festival'
     },
     'united states':{
         'eventLocation': 'Las Vegas, Nevada, USA',
         'eventName': 'Electric Daisy Carnival',
-        'eventType': 'EDM Music Festival'
+        'eventMusicGenre': 'EDM Music Festival'
     },
     'unknown':{
         'eventLocation': 'unknown',
         'eventName': 'unknown',
-        'eventType': 'unknown'
+        'eventMusicGenre': 'unknown'
     },
 }
 
@@ -29,10 +29,10 @@ app.get('/', (req, res) => {
 
 app.get('/api/:eventLocation' , (req, res) => {
     const festivalCountry = req.params.eventLocation.toLowerCase()
-    if (festivals[festivalCountry]){
-        res.json(festivals[festivalCountry])
+    if (musicFestivals[festivalCountry]){
+        res.json(musicFestivals[festivalCountry])
     }else{
-        res.json(festivals['unknown'])
+        res.json(musicFestivals['unknown'])
     }
 })
 
