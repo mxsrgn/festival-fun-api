@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
-const cors = require('cors')
 const PORT = 8000
-
+const cors = require('cors')
 
 app.use(cors())
 
@@ -28,15 +27,15 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
-app.get('/api/:name' , (req, res) => {
-    const festivalCountry = req.params.name.toLowerCase()
-    if(festivals[festivalCountry]){
+app.get('/api/:eventLocation' , (req, res) => {
+    const festivalCountry = req.params.eventLocation.toLowerCase()
+    if (festivals[festivalCountry]){
         res.json(festivals[festivalCountry])
     }else{
         res.json(festivals['unknown'])
     }
 })
 
-app.listen(process.envPORT || PORT , () =>{
+app.listen(process.env.PORT || PORT , () =>{
     console.log(`The server is now running on port ${PORT}! Betta Go Catch It!`)
 })
